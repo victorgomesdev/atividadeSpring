@@ -3,6 +3,7 @@ package com.example.projeto.service;
 import org.springframework.stereotype.Service;
 import com.example.projeto.repository.ProdutoRepository;
 import com.example.projeto.model.Produto;
+import com.example.projeto.model.Pessoa;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +24,8 @@ public class ProdutoService{
         return produtoRepository.findById(id);
     }
 
-    public Produto salvarProduto(Produto produto){
+    public Produto salvarProduto(Produto produto, Pessoa pessoa){
+        produto.setPessoa(pessoa);
         return produtoRepository.save(produto);
     }
 

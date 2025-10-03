@@ -10,6 +10,8 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name = "produtos")
@@ -21,6 +23,10 @@ public class Produto {
     private String nome;
     private Integer quantidade;
     private BigDecimal valor;
+
+    @ManyToOne
+    @JoinColumn(name = "pessoa_id")
+    private Pessoa pessoa;
 
     public Produto() {
     }
@@ -57,5 +63,12 @@ public class Produto {
 
     public BigDecimal getValor() {
         return valor;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 }

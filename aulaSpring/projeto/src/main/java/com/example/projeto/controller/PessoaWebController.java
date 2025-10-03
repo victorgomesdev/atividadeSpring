@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.projeto.model.Pessoa;
 import com.example.projeto.service.PessoaService;
+import com.example.projeto.model.Produto;
 
 import org.springframework.http.HttpStatus;
 
@@ -34,6 +35,7 @@ public class PessoaWebController {
     @GetMapping("/cadastrar")
     public String exibirFormCadastro(Model model) {
         model.addAttribute("pessoa", new Pessoa());
+        model.addAttribute("produto", new Produto());
         return "pessoas/form";
     }
 

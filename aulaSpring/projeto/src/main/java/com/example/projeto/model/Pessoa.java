@@ -5,6 +5,10 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import java.util.List;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.FetchType;
 
 @Entity
 @Table(name = "pessoas")
@@ -16,6 +20,9 @@ public class Pessoa{
 
     private String nome;
     private Integer idade;
+
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Produto> produtos;
 
     public Pessoa() {}
 
@@ -42,5 +49,13 @@ public class Pessoa{
 
     public Integer getIdade() {
         return idade;
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
     }
 }
