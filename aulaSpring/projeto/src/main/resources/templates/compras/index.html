@@ -18,9 +18,9 @@
     <div th:replace="fragments/navbar :: navbar"></div>
     <div class="container">
         <aside class="sidebar">
-            <h3>Pessoas</h3>
+            <h3 style="margin-bottom: 10px;">Clientes</h3>
             <ul>
-                <li th:each="p : ${pessoas}">
+                <li  th:each="p : ${pessoas}">
                     <a th:href="@{/compras/{id}(id=${p.id})}" th:text="${p.nome}" th:classappend="${p.id} == ${pessoaSelecionada?.id} ? 'active'"></a>
                 </li>
             </ul>
@@ -28,18 +28,18 @@
         </aside>
         <main class="content">
             <div th:if="${pessoaSelecionada != null}">
-                <h2 th:text="'Produtos de ' + ${pessoaSelecionada.nome}"></h2>
+                <h2 style="margin-bottom: 30px;" th:text="'Lista de ' + ${pessoaSelecionada.nome}"></h2>
                 <ul>
-                    <li th:each="prod : ${pessoaSelecionada.produtos}">
+                    <li style="margin-bottom: 5px;" th:each="prod : ${pessoaSelecionada.produtos}">
                         <span th:text="${prod.nome}"></span> - 
                         <span th:text="${prod.quantidade}"></span> unidades - 
-                        <span th:text="${prod.valor}"></span> R$
+                        R$<span th:text="${prod.valor}"></span> 
                     </li>
                 </ul>
                 <a th:href="@{/produtos/cadastrar/{id}(id=${pessoaSelecionada.id})}" class="botao">Adicionar Produto</a>
             </div>
             <div th:if="${pessoaSelecionada == null}">
-                <p>Selecione uma pessoa para ver os produtos.</p>
+                <p>Selecione um cliente para ver a lista dele</p>
             </div>
         </main>
     </div>

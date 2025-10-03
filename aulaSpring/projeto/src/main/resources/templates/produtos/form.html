@@ -9,18 +9,18 @@
     <div th:replace="fragments/navbar :: navbar"></div>
     <main class="main-content">
         <h1>Cadastrar Produto para <span th:text="${pessoa.nome}"></span></h1>
-        <form th:action="@{/produtos/cadastrar/{id}(id=${pessoa.id})}" th:object="${produto}" method="post">
+        <form class="form" th:action="@{/produtos/cadastrar/{id}(id=${pessoa.id})}" th:object="${produto}" method="post">
             <div>
                 <label>Nome:</label>
-                <input type="text" th:field="*{nome}" required />
+                <input class="inputs" type="text" th:field="*{nome}" required />
             </div>
             <div>
                 <label>Quantidade:</label>
-                <input type="number" th:field="*{quantidade}" required />
+                <input class="inputs" type="number" th:field="*{quantidade}" required />
             </div>
             <div>
                 <label>Valor:</label>
-                <input type="number" th:field="*{valor}" step="0.01" required />
+                <input class="inputs" type="number" th:field="*{valor}" step="0.01" required />
             </div>
             <button type="submit" class="botao">Salvar</button>
         </form>
